@@ -113,8 +113,17 @@ nav {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#modal-reg-p {
+#modal-reg-p,
+#modal-log-p {
   text-align: center;
   color: rgb(224, 158, 15);
   font-size: 13px;
+}
+h5 {
+  color: #6f7174;
+}
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }

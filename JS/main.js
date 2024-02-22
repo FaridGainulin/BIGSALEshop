@@ -9,6 +9,7 @@ const navBtnAdd = document.querySelector("#nav-btn-add");
 const navBtnReg = document.querySelector("#nav-btn-reg");
 const navBtnLog = document.querySelector("#nav-btn-log");
 const navBtnOut = document.querySelector("#nav-btn-out");
+const loginName = document.querySelector("#login-name");
 
 // подключения к модалке регистрации
 const modalReg = document.querySelector("#modal-reg");
@@ -28,7 +29,9 @@ const modalLog = document.querySelector("#modal-log");
 const formLog = document.querySelector("#form-log");
 const usernameLogin = document.querySelector("#username-login");
 const passwordLogin = document.querySelector("#password-login");
+const modalLogP = document.querySelector("#modal-log-p");
 const btnLog = document.querySelector("#btn-log");
+const btnCancelLog = document.querySelector("#cancel-log");
 
 // подключения к модалке добавления
 const modalAdd = document.querySelector("#modal-add");
@@ -38,6 +41,7 @@ const category = document.querySelector("#category");
 const price = document.querySelector("#price");
 const image = document.querySelector("#image");
 const btnAdd = document.querySelector("#btn-add");
+const productsList = document.querySelector(".products");
 
 // подключения к модалке изменения
 const modalEdit = document.querySelector("#modal-edit");
@@ -151,3 +155,154 @@ btnCancel.addEventListener("click", hideModalReg);
 navBtnLog.addEventListener("click", () => {
   modalLog.classList.toggle("display-none");
 });
+
+function hideModalLog() {
+  modalLog.classList.toggle("display-none");
+}
+async function checkUserPassword(username, password) {
+  let res = await fetch(USERS_API);
+  let users = await res.json();
+  const userObj = users.find((item) => item.username === username);
+  return userObj.password === password ? true : false;
+}
+
+let admin = null;
+
+async function loginUser(e) {
+  e.preventDefault();
+  if (!usernameLogin.value.trim() || !passwordLogin.value.trim()) {
+    modalLogP.innerText = "Введите данные";
+    return;
+  }
+  let account = await checkUniqueUserName(usernameLogin.value);
+
+  if (!account) {
+    modalLogP.innerText = "*Пользователь не зарегестрирован";
+    return;
+  }
+  let logPass = await checkUserPassword(
+    usernameLogin.value,
+    passwordLogin.value
+  );
+  if (!logPass) {
+    modalLogP.innerText = "*Не верный пароль";
+    return;
+  }
+  let res = await fetch(USERS_API);
+  let users = await res.json();
+  const userObj = await users.find((item) => item.isAdmin);
+  let us = userObj.username;
+  if (us === usernameLogin.value) {
+    admin = admin;
+    navBtnAdd.classList.toggle("display-none");
+    navBtnOut.classList.toggle("display-none");
+    navBtnLog.classList.toggle("display-none");
+    navBtnReg.classList.toggle("display-none");
+    loginName.innerHTML = `Привет, ${usernameLogin.value}`;
+  } else {
+    navBtnOut.classList.toggle("display-none");
+    navBtnLog.classList.toggle("display-none");
+    navBtnReg.classList.toggle("display-none");
+    loginName.innerHTML = `Привет, ${usernameLogin.value}`;
+  }
+  usernameLogin.value = "";
+  passwordLogin.value = "";
+  hideModalLog();
+}
+
+formLog.addEventListener("submit", loginUser);
+btnCancelLog.addEventListener("click", hideModalLog);
+
+//Логаут
+navBtnOut.addEventListener("click", () => {
+  navBtnAdd.classList.add("display-none");
+  navBtnOut.classList.toggle("display-none");
+  navBtnLog.classList.toggle("display-none");
+  navBtnReg.classList.toggle("display-none");
+  loginName.innerHTML = "";
+});
+
+// ! CRUD start
+// ?create product
+
+navBtnAdd.addEventListener("click", () => {
+  modalAdd.classList.toggle("display-none");
+});
+
+async function createProduct(e) {
+  e.preventDefault();
+  if (
+    !title.value.trim() ||
+    !category.value.trim() ||
+    !image.value.trim() ||
+    !price.value.trim()
+  ) {
+    alert("Заполните все поля!!!");
+    return;
+  }
+
+  const newProduct = {
+    title: title.value,
+    category: category.value,
+    image: image.value,
+    price: price.value,
+  };
+
+  await fetch(PRODUCTS_API, {
+    method: "POST",
+    body: JSON.stringify(newProduct),
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+  });
+  render();
+}
+formAdd.addEventListener("submit", createProduct);
+
+// ? read logic
+
+async function render() {
+  const requestAPI = `${PRODUCTS_API}`;
+  const res = await fetch(requestAPI);
+  const data = await res.json();
+  productsList.innerHTML = "";
+  data.forEach((card) => {
+    productsList.innerHTML += `
+    <div class='prodList'>
+    <img  width="300px" height="300px" object-fit="contain" scr=${card.image}/>
+    <div><b>Title: ${card.title}</b></div>
+    <div>Category: ${card.category}</div>
+    <div>Price: ${card.price}$</div>
+    <button id=${card.id}  class='deleteBtn' >Delete</button>
+     <button id=${card.id}  class='editBtn' >Edit</button>
+
+    </div>
+
+    `;
+  });
+  console.log(data);
+}
+
+render();
+btnAdd.addEventListener("click", () => {
+  modalAdd.classList.toggle("display-none");
+});
+
+// ?delete logic
+
+document.addEventListener("click", async (e) => {
+  if (e.target.classList.contains("deleteBtn")) {
+    await fetch(`${PRODUCTS_API}/${e.target.id}`, {
+      method: "DELETE",
+    });
+    render();
+  }
+});
+
+// ? update logic
+let id = null;
+document /
+  addEventListener("click", async (e) => {
+    if (e.target.classList.contains("editBtn")) {
+    }
+  });

@@ -38,6 +38,7 @@
       <button id="nav-btn-log" class="btn">
         <i class="material-icons icon">person</i> Войти
       </button>
+      <h5 id="login-name"></h5>
       <button id="nav-btn-out" class="btn display-none">
         <i class="material-icons icon">exit_to_app</i> Выйти
       </button>
@@ -54,6 +55,7 @@
         <label>Подтверждение:<input id="passwordConf" type="password" /></label>
         <p id="modal-reg-p"></p>
         <button id="btn-reg">Зарегестрировать</button>
+
         <button id="cancel" type="reset">Выйти</button>
       </form>
     </div>
@@ -64,8 +66,9 @@
       <form id="form-log">
         <label>Username:<input id="username-login" type="text" /> </label>
         <label>Password:<input id="password-login" type="password" /> </label>
+        <p id="modal-log-p"></p>
         <button id="btn-log">Подтвердить</button>
-        <button id="cancel" type="reset">Отмена</button>
+        <button id="cancel-log" type="reset">Отмена</button>
       </form>
     </div>
 
@@ -94,7 +97,7 @@
         <button id="cancel" type="reset">Отмена</button>
       </form>
     </div>
-
+    <div class="products"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./JS/main.js"></script>
   </body>
