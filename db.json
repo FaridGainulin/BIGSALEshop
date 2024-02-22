@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "age": "12",
+      "password": "123456",
+      "isAdmin": true,
+      "id": 1
+    },
+    {
+      "username": "farid",
+      "email": "farid@gmail.com",
+      "age": "33",
+      "isAdmin": false,
+      "password": "123456",
+      "id": 2
+    },
+    {
+      "username": "farid1",
+      "email": "farid@gmail.com",
+      "age": "33",
+      "isAdmin": false,
+      "password": "123456",
+      "id": 3
+    },
+    {
+      "username": "farid2",
+      "email": "farid@gmail.com",
+      "age": "22",
+      "isAdmin": false,
+      "password": "123456",
+      "id": 4
+    }
+  ],
+  "products": []
+}

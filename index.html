@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="shortcut icon" href="./images/sale-icon.png" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>BIGSALE shop</title>
+  </head>
+  <body>
+    <!-- Навбар -->
+    <nav>
+      <div class="logo">
+        <img
+          src="https://png.pngtree.com/png-clipart/20210418/original/pngtree-big-sale-icon-png-image_6233635.png"
+          alt="Logo"
+        />
+        <h1>BIG SALE shop</h1>
+        <p id="nav-log-text"></p>
+      </div>
+      <div class="search">
+        <input id="nav-inp-search" type="text" placeholder="Найти..." />
+      </div>
+      <button id="nav-btn-add" class="btn display-none">
+        <i class="material-icons icon">add_shopping_cart</i> Добавить
+      </button>
+      <button id="nav-btn-reg" class="btn">
+        <i class="material-icons icon">person_add</i> Регистрация
+      </button>
+      <button id="nav-btn-log" class="btn">
+        <i class="material-icons icon">person</i> Войти
+      </button>
+      <button id="nav-btn-out" class="btn display-none">
+        <i class="material-icons icon">exit_to_app</i> Выйти
+      </button>
+    </nav>
+
+    <!-- Модальное окно регистрации -->
+    <div id="modal-reg" class="modal-reg display-none">
+      <h3>Регистрация</h3>
+      <form id="form-reg">
+        <label>Имя:<input id="username" type="text" /></label>
+        <label>Email:<input id="email" type="email" /></label>
+        <label>Возраст: <input id="age" type="number" /></label>
+        <label>Пароль:<input id="password" type="password" /></label>
+        <label>Подтверждение:<input id="passwordConf" type="password" /></label>
+        <p id="modal-reg-p"></p>
+        <button id="btn-reg">Зарегестрировать</button>
+        <button id="cancel" type="reset">Выйти</button>
+      </form>
+    </div>
+
+    <!-- Модальное окно входа -->
+    <div id="modal-log" class="modal-log display-none">
+      <h3>Вход</h3>
+      <form id="form-log">
+        <label>Username:<input id="username-login" type="text" /> </label>
+        <label>Password:<input id="password-login" type="password" /> </label>
+        <button id="btn-log">Подтвердить</button>
+        <button id="cancel" type="reset">Отмена</button>
+      </form>
+    </div>
+
+    <!-- Модальное окно добавления товара -->
+    <div id="modal-add" class="modal-add display-none">
+      <h3>Добавить</h3>
+      <form id="form-add">
+        <label>Наименование: <input id="title" type="text" /></label>
+        <label>Категория: <input id="category" type="text" /></label>
+        <label>Цена: <input id="price" type="number" /></label>
+        <label>Изображение: <input id="image" type="url" /></label>
+        <button id="btn-add">Добавить</button>
+        <button id="cancel" type="reset">Отмена</button>
+      </form>
+    </div>
+
+    <!-- Модальное окно изменения товара -->
+    <div id="modal-edit" class="modal-edit display-none">
+      <h3>Изменить</h3>
+      <form id="form-edit">
+        <label>Наименование: <input type="text" id="titleEdit" /></label>
+        <label>Категория: <input type="text" id="categoryEdit" /></label>
+        <label>Цена: <input type="number" id="priceEdit" /></label>
+        <label>Изображение: <input type="url" id="imageEdit" /></label>
+        <button id="btn-edit">Сохранить</button>
+        <button id="cancel" type="reset">Отмена</button>
+      </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./JS/main.js"></script>
+  </body>
+</html>
