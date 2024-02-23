@@ -78,10 +78,12 @@
       <form id="form-add">
         <label>Наименование: <input id="title" type="text" /></label>
         <label>Категория: <input id="category" type="text" /></label>
+        <label>Описание: <input id="discAdd" type="text" /></label>
         <label>Цена: <input id="price" type="number" /></label>
         <label>Изображение: <input id="image" type="url" /></label>
+        <p id="modal-add-p"></p>
         <button id="btn-add">Добавить</button>
-        <button id="cancel" type="reset">Отмена</button>
+        <button id="cancel-add" type="reset">Отмена</button>
       </form>
     </div>
 
@@ -91,13 +93,18 @@
       <form id="form-edit">
         <label>Наименование: <input type="text" id="titleEdit" /></label>
         <label>Категория: <input type="text" id="categoryEdit" /></label>
+        <label>Описание: <input id="discEdit" type="text" /></label>
         <label>Цена: <input type="number" id="priceEdit" /></label>
         <label>Изображение: <input type="url" id="imageEdit" /></label>
+        <p id="modal-edit-p"></p>
         <button id="btn-edit">Сохранить</button>
-        <button id="cancel" type="reset">Отмена</button>
+        <button id="cancelEdit" type="reset">Отмена</button>
       </form>
     </div>
+    <!-- тело карточек -->
     <div class="products"></div>
+    <!-- модалка описаний -->
+    <div class="disc display-none"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./JS/main.js"></script>
   </body>

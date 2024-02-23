@@ -59,14 +59,29 @@ nav {
 .modal-log,
 .modal-add,
 .modal-edit {
+  position: fixed;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 300px;
   margin: 0 auto;
   margin-bottom: 10px;
   padding: 10px;
-  background-color: #f8f8f8;
+  background-color: #ece5e5;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+.prodList {
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f9f3f3;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .modal-reg h3,
 .modal-log h3,
 .modal-add h3,
@@ -114,7 +129,9 @@ nav {
 }
 
 #modal-reg-p,
-#modal-log-p {
+#modal-log-p,
+#modal-add-p,
+#modal-edit-p {
   text-align: center;
   color: rgb(224, 158, 15);
   font-size: 13px;
@@ -126,4 +143,55 @@ h5 {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  padding: 10px;
+}
+.deleteBtn {
+  padding: 5px;
+  background-color: #e54180;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.deleteBtn:hover {
+  background-color: #b43364;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.editBtn {
+  padding: 5px;
+  background-color: #91f370;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.editBtn:hover {
+  background-color: #60a24a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#discription {
+  display: none;
+}
+.disc {
+  position: fixed;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #ece5e5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.price {
+  color: #516161;
+  letter-spacing: 1px;
+
+  font-size: 20px;
+  font-weight: 600;
 }
