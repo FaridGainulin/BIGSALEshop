@@ -308,7 +308,9 @@ async function render() {
   data.forEach((card) => {
     productsList.innerHTML += `
   <div class='prodList'>
-    <img  width="280px" height="280px" object-fit="contain" src="${
+    <img id=${
+      card.id
+    } class='hover'  width="280px" height="280px" object-fit="contain" src="${
       card.image
     }"/>
     <div class="price"> ${card.price} €</div>
@@ -404,10 +406,10 @@ navInpSearch.addEventListener("input", () => {
 //логика модалки описания
 const disc = document.querySelector(".disc");
 document.addEventListener("click", async (e) => {
-  e.stopPropagation();
-  const test = e.target.querySelector("#discription");
-  const test2 = test.innerHTML;
-  disc.classList.toggle("display-none");
-  disc.innerHTML = `${test2}`;
-  console.log(test2);
+  if (e.target.classList.contains("hover")) {
+    const response = await fetch(`${PRODUCTS_API}/${e.target.id}`);
+    const data = await response.json();
+    disc.innerHTML = data.discription;
+    disc.classList.toggle("display-none");
+  }
 });
